@@ -1,0 +1,36 @@
+version: '3.8'
+
+services:
+  db:
+    image: 'postgres:13.1-alpine'
+    container_name: postgres_todo_container
+    environment:
+      - POSTGRES_USER=postgres
+      - POSTGRES_PASSWORD=postgres
+      - POSTGRES_DB=todo
+    ports:
+      - "5433:5432"
+    restart: always
+
+#  app:
+#    image: 'todo-backend:latest'
+#    container_name: todo_backend_container
+#    build:
+#      context: .
+#      dockerfile: Dockerfile
+#    ports:
+#      - "8081:8081"
+#    depends_on:
+#      - db
+#    environment:
+#      - SERVER_PORT=8081
+#      ###JPA
+#      - spring.jpa.properties.hibernate.dialect=org.hibernate.dialect.PostgreSQL82Dialect
+#      - spring.jpa.hibernate.ddl-auto=create-drop
+#      - spring.jpa.hibernate.show-sql=true
+#      - spring.jpa.properties.hibernate.format_sql=true
+#      ###DB
+#      - spring.datasource.url=jdbc:postgresql://db:5432/todo
+#      - spring.datasource.username=postgres
+#      - spring.datasource.password=postgres
+#      - spring.datasource.driver-class-name=org.postgresql.Driver
